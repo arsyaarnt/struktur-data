@@ -220,7 +220,7 @@ int main() {
 ![Output File pointers.cpp](image/pointers.png)
 
 ## String
-Program akan menentukan size dari string ```str``` yang di-*input* pengguna menggunakan ```str.size()```.
+Program akan menentukan *size* dari *string* ```str``` yang di-*input* pengguna menggunakan ```str.size()```.
 
 **Kode**:
 ```cpp
