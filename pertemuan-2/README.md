@@ -30,7 +30,7 @@ int main() {
 
 
 ## Control Flow
-Program akan menentukan apakah angka yang di-*input* oleh pengguna termasuk ke dalam bilangan ganjil atau genap.
+Program akan menentukan apakah angka yang di-*input* pengguna termasuk ke dalam bilangan ganjil atau genap.
 
 **Kode**:
 ```cpp
@@ -110,7 +110,7 @@ int main() {
 ![Output File function.cpp](image/function.png)
 
 ## Function 2 (Bilangan Prima)
-Program akan meng-*print* semua bilangan prima yang berada di dalam *range* angka yang telah ditentukan oleh pengguna. Program akan menggunakan fungsi ```isPrime``` untuk menentukan apakah bilangan tersebut merupakan bilangan prima atau tidak, dan fungsi ```findPrimes``` untuk mencari bilangan-bilangan prima yang terdapat di dalam *range* yang telah ditentukan oleh pengguna.
+Program akan meng-*print* semua bilangan prima yang berada di dalam *range* angka yang telah ditentukan pengguna. Program akan menggunakan fungsi ```isPrime``` untuk menentukan apakah bilangan tersebut merupakan bilangan prima atau tidak, dan fungsi ```findPrimes``` untuk mencari bilangan-bilangan prima yang terdapat di dalam *range* yang telah ditentukan oleh pengguna.
 
 **Kode**:
 ```cpp
@@ -153,7 +153,7 @@ int main() {
 ![Output File function2.cpp](image/function2.png)
 
 ## Array
-Program akan menentukan nilai minimum menggunakan fungsi ```getMin``` dan maksimum menggunakan fungsi ```getMax``` dari *array* yang telah di-*input* oleh pengguna.
+Program akan menentukan nilai minimum menggunakan fungsi ```getMin``` dan maksimum menggunakan fungsi ```getMax``` dari *array* yang telah di-*input* pengguna.
 
 **Kode**:
 ```cpp
@@ -220,7 +220,7 @@ int main() {
 ![Output File pointers.cpp](image/pointers.png)
 
 ## String
-Program akan menentukan size dari string ```str``` yang di-*input* oleh pengguna menggunakan ```str.size()```.
+Program akan menentukan size dari string ```str``` yang di-*input* pengguna menggunakan ```str.size()```.
 
 **Kode**:
 ```cpp
