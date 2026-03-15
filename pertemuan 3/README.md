@@ -1,4 +1,4 @@
-# Tipe Data dalam C++
+# *Array of Data* di C++
 
 ## Deklarasi Array
 Array dapat dideklarasikan menggunakan ```[]``` (kurung siku), dan data-data di dalam array tersebut dapat di-*input* di dalam ```{}``` (kurung kurawal) dan dipisahkan menggunakan koma. Selanjutnya, data-data tersebut dapat dikeluarkan satu per satu menggunakan *for loop*. Selain itu, untuk mengakses alamat dari setiap data yang ada di dalam array, maka dapat ditambahkan ```&``` (*operator address-of*) sebelum variabel.
