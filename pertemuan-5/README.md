@@ -216,6 +216,6 @@ int main() {
 }
 ```
 
-**Output***:
+**Output**:
 
 ![Output File stack_list.cpp](image/stack_using_list.png)
