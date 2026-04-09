@@ -148,9 +148,10 @@ Proses evaluasi ekspresi matematika postfix diproses di dalam fungsi `eval_postf
 ![Output File eval_postfix.cpp](image/evaluasi_postfix.png)
 
 ### Visualisasi Output
-23+5*
 | Read | Action | Stack |
 |------|--------|-------|
 | `2` | Push ke stack | `2` |
 | `3` | Push ke stack | `2, 3` |
-| `+` | Simpan 
+| `+` | Pop 3 (`num2`) dan pop 2 (`num1`); push 3 + 2 = 5 | `5` |
+| `5` | Push ke stack | `5, 5` |
+| `*` | Pop 5 (`num2`) dan pop 5 (`num1`); push 5 * 5 = 25 | `25` |
