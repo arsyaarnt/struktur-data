@@ -152,6 +152,64 @@ Proses evaluasi ekspresi matematika postfix diproses di dalam fungsi `eval_postf
 |------|--------|-------|
 | `2` | Push ke stack | `2` |
 | `3` | Push ke stack | `2, 3` |
-| `+` | Pop 3 (`num2`) dan pop 2 (`num1`); push 3 + 2 = 5 | `5` |
+| `+` | Pop 3 (`num2`) & pop 2 (`num1`); push 3 + 2 = 5 | `5` |
 | `5` | Push ke stack | `5, 5` |
-| `*` | Pop 5 (`num2`) dan pop 5 (`num1`); push 5 * 5 = 25 | `25` |
+| `*` | Pop 5 (`num2`) & pop 5 (`num1`); push 5 * 5 = 25 | `25` |
+
+## Multi Digit Postfix
+**Full Code**:
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int eval_postfix(string exp) {
+    stack<int> st;
+    stringstream ss(exp);
+    string token;
+
+    while(ss >> token) {
+
+        if(token == "*" || token == "/" || token == "+" || token == "-") {
+            int num2 = st.top();
+            st.pop();
+            int num1 = st.top();
+            st.pop();
+
+            if(token == "*") st.push(num1 * num2);
+            else if(token == "/") st.push(num1 / num2);
+            else if(token == "+") st.push(num1 + num2);
+            else st.push(num1 - num2);
+        }
+        else st.push(stoi(token));
+    }
+
+    return st.top();
+}
+
+int main() {
+    string postfix;
+
+    cout << "Masukkan ekspresi postfix (pisahkan dengan spasi): ";
+    getline(cin, postfix);
+
+    cout << "Hasil: " << eval_postfix(postfix) << endl;
+
+    return 0;
+}
+```
+
+### Penjelasan Kode
+Perbedaan utama antara kode ini dengan kode sebelumnya adalah kode ini dapat meng-*handle* angka *multi-digit* dan spasi. Pada fungsi `eval_postfix(string exp)`, terdapat `stringstream` yang digunakan untuk memisahkan *input* menjadi token per kata. Setelah itu, token-token tersebut akan disimpan di variabel `token`.
+
+**Output**:
+
+![Output File multi_digit_postfix.cpp](image/multi_digit_postfix.png)
+
+### Visualisasi Output
+| Token | Action | Stack |
+|-------|--------|-------|
+| `10` | Push ke stack | `10` |
+| `5` | Push ke stack | `10, 5` |
+| `*` | Pop 5 (`num2`) & pop 10 (`num1`); push 10 * 5 = 50 | `50` |
+| `17` | Push ke stack | `50, 17` |
+| `+` | Pop 17 (`num2`) & pop 50 (`num1`); push 50 + 17 = 67 | `67` |
