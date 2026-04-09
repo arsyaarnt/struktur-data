@@ -1,4 +1,4 @@
-# Studi Kasus Stack
+# Aplikasi Penggunaan Stack
 
 ## Konversi ke Postfix
 
