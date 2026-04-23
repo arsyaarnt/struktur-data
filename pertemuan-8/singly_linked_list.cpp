@@ -23,6 +23,8 @@ Node *_insert(Node *node, int value) {
 }
 
 void traversal(Node *node) {
+    if(node == NULL) return;
+    
     Node *temp = node;
 
     while(temp != NULL) {
