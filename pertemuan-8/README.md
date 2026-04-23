@@ -1,216 +1,257 @@
 # Linked List
 
-## _Singly Linked List_
+## Singly Linked List
 
 **Full Code**:
 ```cpp
-#include <iostream>
-using namespace std;
-
+#include <bits/stdc++.h>
 #define MAX 5
-
-class Queue {
-private:
-    int arr[MAX];
-    int front, rear;
-
-public:
-    Queue() {
-        front = -1;
-        rear = -1;
-    }
-
-    bool isEmpty() {
-        return(front == -1);
-    }
-
-    bool isFull() {
-        return(rear == MAX - 1);
-    }
-
-    void enqueue(int x) {
-        if (isFull()) {
-            cout << "Queue Overflow\n";
-            return;
-        }
-
-        if (isEmpty()) front = 0;
-
-        arr[++rear] = x;
-        cout << "Elemen " << x << " masuk ke queue\n";
-    }
-
-    void dequeue() {
-        if (isEmpty()) {
-            cout << "Queue Underflow\n";
-            return;
-        }
-
-        cout << "Elemen " << arr[front] << " keluar dari queue\n";
-
-        if (front == rear) front = rear = -1;
-        else front++;
-    }
-
-    void display() {
-        if (isEmpty()) {
-            cout << "Queue kosong\n";
-            return;
-        }
-
-        cout << "Isi Queue: ";
-
-        for (int i = front; i <= rear; i++) cout << arr[i] << " ";
-
-        cout << endl;
-    }
-};
-
-int main() {
-    Queue q;
-
-    q.enqueue(10);
-    q.enqueue(20);
-    q.enqueue(30);
-
-    q.display();
-
-    q.dequeue();
-    q.display();
-
-    return 0;
-}
-
-```
-
-### Penjelasan Kode
-Pada awal kode tersebut, dibuat `class` _queue_ yang memiliki ukuran = `MAX` (lima), serta `front` dan `rear`. `Front` menunjuk pada elemen pertama dari _queue_, sedangkan `rear` merujuk pada elemen terakhir dari _queue_. Pada kondisi awal, `front` dan `rear` dari _queue_ akan di-set terlebih dahulu menjadi = -1, menandakan bahwa _queue_ masih kosong.
-
-#### Penjelasan Fungsi
-##### 1. `isEmpty()`
-Fungsi tersebut digunakan untuk mengecek, apakah _queue_ masih kosong atau tidak. _Queue_ dikatakan masih kosong, apabila nilai `front` = 1.
-
-##### 2. `isFull()`
-Fungsi tersebut digunakan untuk mengecek, apakah _queue_ sudah penuh (dalam kasus ini, _queue_ maksimal berisi lima elemen/antrean). _Queue_ dikatakan penuh, apabila nilai `rear` = `MAX` - 1 (indeks terakhir).
-
-##### 3. `enqueue(int x)`
-Fungsi tersebut digunakan untuk menambah elemen pada _queue_. _Queue_ akan dicek terlebih dahulu, jika ia sudah penuh (`isFull()` = _true_), maka elemen di dalam _queue_ sudah tidak dapat ditambah. Namun, jika _queue_ masih kosong (`isEmpty()` = _true_), maka `front` akan di-_set_ ke index 0. Setelah itu, `rear` akan di-_increment_ terlebih dahulu, dan selanjutnya nilai (yang dalam kasus ini ada pada variabel `x`) dimasukkan.
-
-##### 4. `dequeque()`
-Fungsi tersebut digunakan untuk menghapus elemen pada _queue_. _Queue_ akan dicek terlebih dahulu, jika ia sudah kosong (`isEmpty()` = _true_), maka sudah tidak ada elemen yang dapat dihapus. Namun, jika belum, maka `front` dapat di-_increment_ (atau digeser ke kanan) (jika tinggal satu elemen, maka nilai `front` = `rear` = 1).
-
-##### 5. `display()`
-Fungsi tersebut digunakan untuk menampilkan isi _queue_. _Queue_ akan dicek terlebih dahulu, jika ia memiliki isi (`isEmpty()` = _false_), maka isi _queue_ dapat ditampilkan satu per satu menggunakan _for loop_.
-
-**Output**:
-
-![Output File queue_array.cpp](image/queue_array.png)
-
-## Implementasi _Queue_ dengan _Linked List_
-
-**Full Code**:
-```cpp
-#include <iostream>
 using namespace std;
 
 struct Node {
     int data;
-    Node* next;
+    Node *next;
 };
 
-class Queue {
-private:
-    Node *front, *rear;
+Node *_insert(Node *node, int value) {
+    Node *newNode = new Node();
+    newNode->data = value;
+    newNode->next = NULL;
 
-public:
-    Queue() {
-        front = rear = NULL;
+    if(node == NULL) return newNode;
+
+    Node *temp = node;
+
+    while(temp->next != NULL) temp = temp->next;
+    temp->next = newNode;
+
+    return node;
+}
+
+void traversal(Node *node) {
+    if(node == NULL) return;
+
+    Node *temp = node;
+
+    while(temp != NULL) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
     }
 
-    bool isEmpty() {
-        return (front == NULL);
-    }
-
-    void enqueue(int x) {
-        Node* newNode = new Node();
-        newNode->data = x;
-        newNode->next = NULL;
-
-        if (rear == NULL) front = rear = newNode;
-        else {
-            rear->next = newNode;
-            rear = newNode;
-        }
-
-        cout << "Elemen " << x << " masuk ke queue\n";
-    }
-
-    void dequeue() {
-        if (isEmpty()) {
-            cout << "Queue kosong\n";
-            return;
-        }
-
-        Node* temp = front;
-        cout << "Elemen " << temp->data << " keluar dari queue\n";
-
-        front = front->next;
-
-        if (front == NULL) rear = NULL;
-
-        delete temp;
-    }
-
-    void display() {
-        if (isEmpty()) {
-            cout << "Queue kosong\n";
-            return;
-        }
-
-        Node* temp = front;
-        cout << "Isi Queue: ";
-
-        while (temp != NULL) {
-            cout << temp->data << " ";
-            temp = temp->next;
-        }
-
-        cout << endl;
-    }
-};
+    cout << "NULL" << endl;
+}
 
 int main() {
-    Queue q;
+    Node *node = NULL;
 
-    q.enqueue(5);
-    q.enqueue(15);
-    q.enqueue(25);
+    int iter = MAX;
 
-    q.display();
+    while(iter--) {
+        int num;
 
-    q.dequeue();
-    q.display();
+        cout << "Masukkan data: ";
+        cin >> num;
+
+        node = _insert(node, num);
+    }
+
+    cout << endl << "Visualisasi:" << endl;
+    traversal(node);
 
     return 0;
 }
 ```
 
 ### Penjelasan Kode
-Terdapat _struct_ `Node` yang digunakan untuk menyimpan nilai elemen dan _pointer_ ke _node_ berikutnya. Lalu, terdapat pula _class queue_ dengan _pointer_ ke _node_ paling depan (`*front`) dan ke _node_ paling belakang (`*rear`). Selanjutnya, `front` dan `rear` akan di-_set_ = `NULL`.
+Program tersebut akan menyimpan nilai yang di-_input_ oleh pengguna (total sebanyak 5 nilai) ke dalam struktur data _linked list_ dengan arah penelusuran satu arah. Pada bagian _struct_, terdapat variabel `data` yang digunakan untuk menyimpan nilai dari proses _input_ pengguna, dan _pointer_ `next` yang menunjuk ke _node_ berikutnya.
 
 #### Penjelasan Fungsi
-##### 1. `isEmpty()`
-Fungsi tersebut digunakan untuk mengecek, apakah _queue_ masih kosong atau tidak. _Queue_ dikatakan masih kosong, apabila nilai `front` = `NULL`.
+##### 1. `_insert(Node *node, int value)`
+Fungsi tersebut digunakan untuk menambah _node_ baru di akhir _linked list_. _Node_ baru dibuat menggunakan `new Node()`, lalu mengisi `data` dengan `value` dan `next` dengan `NULL`. Lalu, _node_ terakhir akan dihubungkan dengan _node_ baru tersebut.
 
-##### 2. `enqueue(int x)`
-Fungsi tersebut digunakan untuk menambah elemen pada _queue_. Pertama, _node_ baru akan dibuat di _heap memory_, lalu di-_set_ = `NULL`. Setelahnya, jika _queue_ kosong, maka _node_ baru tersebut akan menjadi satu-satunya elemen. Namun, jika tidak, maka _node_ baru akan disambungkan dengan _node_ yang lama, lalu _rear_ akan di-_update_ ke _node_ yang baru.
-
-##### 3. `dequeue()`
-Fungsi tersebut digunakan untuk menghapus elemen pada _queue_. Apabila _queue_ belum kosong, maka _node_ yang akan dihapus (umumnya _node_ terdepan) akan disimpan di variabel sementara untuk di-_print_. Setelah itu, `front` akan digeser ke _node_ berikutnya. Apabila _queue_ menjadi kosong setelah proses penghapusan tersebut, maka `rear` = `NULL`. Terakhir, memori _node_ yang dihapus akan dibebaskan.
-
-##### 4. `display()`
-Fungsi tersebut digunakan untuk menampilkan isi _queue_. Apabila _queue_ tidak kosong, maka dimulai dari depan, dengan menggunakan variabel sementara dan _while loop_, isi dari _queue_ akan di-_print_ satu per satu, diikuti dengan variabel sementara yang akan pindah ke _node_ berikutnya.
+##### 2. `traversal(Node *node)`
+Fungsi tersebut digunakan untuk menampilkan seluruh isi _linked list_. Mulai dari _node_ pertama, fungsi tersebut akan _looping_ untuk menampilkan seluruh isi _linked list_ sebelum mencapai `NULL`.
 
 **Output**:
 
-![Output File queue_linked_list.cpp](image/queue_linked_list.png)
+![Output File singly_linked_list.cpp](image/singly_linked_list.png)
+
+## Doubly Linked List
+
+**Full Code**:
+```cpp
+#include <bits/stdc++.h>
+#define MAX 5
+using namespace std;
+
+struct Node {
+    int data;
+    Node *next, *prev;
+};
+
+Node *_insert(Node *node, int value) {
+    Node *newNode = new Node();
+    newNode->data = value;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+
+    if(node == NULL) return newNode;
+
+    Node *temp = node;
+
+    while(temp->next != NULL) temp = temp->next;
+
+    temp->next = newNode;
+    newNode->prev = temp;
+
+    return node;
+}
+
+void _next(Node *node) {
+    Node *temp = node;
+
+    while(temp != NULL) {
+        cout << temp->data << " <-> ";
+        temp = temp->next;
+    }
+
+    cout << "NULL" << endl;
+}
+
+void _prev(Node *node) {
+    if(node == NULL) return;
+
+    Node *temp = node;
+
+    while(temp->next != NULL) temp = temp->next;
+
+    while(temp != NULL) {
+        cout << temp->data << " <-> ";
+        temp = temp->prev;
+    }
+
+    cout << "NULL" << endl;
+}
+
+int main() {
+    Node *node = NULL;
+
+    int iter = MAX;
+
+    while(iter--) {
+        int num;
+
+        cout << "Masukkan data: ";
+        cin >> num;
+
+        node = _insert(node, num);
+    }
+
+    cout << endl << "Visualisasi:" << endl;
+    cout << "Forward: ";
+    _next(node);
+
+    cout << "Backward: ";
+    _prev(node);
+
+    return 0;
+}
+```
+
+### Penjelasan Kode
+Program tersebut akan menyimpan nilai yang di-_input_ oleh pengguna (total sebanyak 5 nilai) ke dalam struktur data _linked list_ dengan arah penelusuran dua arah. Pada bagian _struct_, terdapat variabel `data` yang digunakan untuk menyimpan nilai dari proses _input_ pengguna, serta _pointer_ `next` yang menunjuk ke _node_ berikutnya dan `prev` yang menunjuk ke _node_ sebelumnya.
+
+#### Penjelasan Fungsi
+##### 1. `_insert(Node *node, int value)`
+Fungsi tersebut digunakan untuk menambah _node_ baru di akhir _linked list_. _Node_ baru dibuat menggunakan `new Node()`, lalu mengisi `data` dengan `value` serta `next` dan `prev` dengan `NULL`. Lalu, _node_ terakhir akan dihubungkan dengan _node_ baru tersebut. Selain itu, _node_ baru juga akan menunjuk ke _node_ sebelumnya, sehingga hubungan dua arah dapat terbentuk.
+
+##### 2. `_next(Node *node)`
+Fungsi tersebut digunakan untuk menampilkan seluruh isi _linked list_. Sama seperti fungsi `traversal` yang telah dijelaskan sebelumnya, dimulai dari _node_ pertama, fungsi tersebut akan _looping_ untuk menampilkan seluruh isi _linked list_ sebelum mencapai `NULL`.
+
+##### 3. `_prev(Node *node)`
+Fungsi tersebut digunakan untuk menampilkan seluruh isi _linked list_ secara terbalik (dari belakang). Mulai dari _node_ terakhir, fungsi tersebut akan _looping_ mundur untuk menampilkan seluruh isi _linked list_ hingga kembali ke _node_ pertama (sebelum mencapai `NULL`).
+
+**Output**:
+
+![Output File doubly_linked_list.cpp](image/doubly_linked_list.png)
+
+## Circular Linked List
+
+**Full Code**:
+```cpp
+#include <bits/stdc++.h>
+#define MAX 5
+using namespace std;
+
+struct Node {
+    int data;
+    Node *next;
+};
+
+Node *_insert(Node *node, int value) {
+    Node *newNode = new Node();
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if(node == NULL) {
+        newNode->next = newNode;
+        return newNode;
+    }
+
+    Node *temp = node;
+
+    while(temp->next != node) temp = temp->next;
+
+    temp->next = newNode;
+    newNode->next = node;
+
+    return node;
+}
+
+void traversal(Node *node) {
+    if(node == NULL) return;
+
+    Node *temp = node;
+
+    do {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    } while(temp != node);
+
+    cout << "(Kembali ke head)" << endl;
+}
+
+int main() {
+    Node *node = NULL;
+
+    int iter = MAX;
+
+    while(iter--) {
+        int num;
+
+        cout << "Masukkan data: ";
+        cin >> num;
+
+        node = _insert(node, num);
+    }
+
+    cout << endl << "Visualisasi:" << endl;
+    traversal(node);
+
+    return 0;
+}
+```
+
+### Penjelasan Kode
+Program tersebut akan menyimpan nilai yang di-_input_ oleh pengguna (total sebanyak 5 nilai) ke dalam struktur data _linked list_ dengan arah penelusuran satu arah. Pada bagian _struct_, terdapat variabel `data` yang digunakan untuk menyimpan nilai dari proses _input_ pengguna, dan _pointer_ `next` yang menunjuk ke _node_ berikutnya.
+
+#### Penjelasan Fungsi
+##### 1. `_insert(Node *node, int value)`
+Fungsi tersebut digunakan untuk menambah _node_ baru di akhir _linked list_. _Node_ baru dibuat menggunakan `new Node()`, lalu mengisi `data` dengan `value` dan `next` dengan `NULL`. Lalu, _node_ terakhir akan dihubungkan dengan _node_ baru tersebut, dan _node_ terbaru tersebut juga akan dihubungkan ke _node_ pertama, sehingga membentuk sebuah hubungan melingkar.
+
+##### 2. `traversal(Node *node)`
+Fungsi tersebut digunakan untuk menampilkan seluruh isi _linked list_. `do-while` digunakan agar setidaknya satu _node_ dicetak terlebih dahulu. Barulah selama kondisi `temp != node` (belum kembali ke awal), akan dilakukan _looping_ mulai dari _node_ pertama hingga sebelum mencapai `NULL` untuk menampilkan seluruh isi _linked list_.
+
+**Output**:
+
+![Output File circular_linked_list.cpp](image/circular_linked_list.png)
