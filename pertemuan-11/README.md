@@ -285,5 +285,5 @@ Fungsi tersebut digunakan untuk menghapus folder yang ditargetkan, dengan proses
 #### _Search_, Total, dan Penghapusan Folder
 ![Output: _Search_, Total, dan Penghapusan Folder](image/search_total_del_folder.png)
 
-#### Struktur Folder Setelah Penghapusan
+#### Struktur Folder setelah Penghapusan
 ![Output: _After Folder Deletion_](image/after_del.png)
