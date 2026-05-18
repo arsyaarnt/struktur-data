@@ -270,5 +270,20 @@ Fungsi tersebut digunakan untuk menghapus folder yang ditargetkan, dengan proses
 5. Hapus _subtree_ target (folder dan seluruh isinya)
 
 **Output**:
+#### Menambahkan Folder
+![Output: Add Folder](image/add_folder.png)
 
-![Output File tree.cpp](image/tree.png)
+#### Struktur Folder
+![Output: Struktur Folder](image/struktur_folder.png)
+
+#### _Preorder Traversal_
+![Output: _Preorder Traversal_](image/preorder_traversal.png)
+
+#### _Postorder Traversal_
+![Output: _Postorder Traversal_](image/postorder_traversal.png)
+
+#### _Search_, Total, dan Penghapusan Folder
+![Output: _Search_, Total, dan Penghapusan Folder](image/search_total_del_folder.png)
+
+#### Struktur Folder Setelah Penghapusan
+![Output: _After Folder Deletion_](image/after_del.png)
