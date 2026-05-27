@@ -310,14 +310,14 @@ Fungsi ini digunakan untuk melakukan penyisipan. Jika _tree_ kosong, maka fungsi
 3. Jika `value` = `root->data`, tidak akan terjadi apa-apa (karena tidak ada duplikat)
 
 #### 4. `void inorder(Node* root)`
-Fungsi ini digunakan untuk mendapatkan hasil data secara terurut (_ascending_). 
+Fungsi ini digunakan untuk mendapatkan hasil data secara terurut (_ascending_), dengan urutan penelusuran: kiri > _root_ > kanan.
 
 #### 5. `bool search(Node* root, int key)`
 Fungsi ini digunakan untuk melakukan pencarian dari nilai yang ditargetkan (`key`). Dengan metode pencarian yang dilakukan sebagai berikut:
 1. Jika `root->data` = `NULL`, maka _return false_
 2. Jika `root->data` = `key`, maka _return true_
-3. Jika `root->data > key`, maka pencarian akan dilanjutkan ke kiri
-4. Jika `root->data < key`, maka pencarian akan dilanjutkan ke kanan
+3. Jika `root->data` > `key`, maka pencarian akan dilanjutkan ke kiri
+4. Jika `root->data` < `key`, maka pencarian akan dilanjutkan ke kanan
 
 **Output**:
 
