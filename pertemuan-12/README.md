@@ -296,7 +296,27 @@ int main() {
 ```
 
 ### Penjelasan Kode
-#### 1.
+#### 1. `struct Node`
+Pada bagian ini, terdapat beberapa variabel utama yang digunakan untuk membentuk sebuah _node_, yakni: `data` untuk menyimpan sebuah nilai, lalu `left` yang merupakan _pointer_ ke anak kiri (nilai lebih kecil) dan `right` yang merupakan _pointer_ ke anak kanan (nilai lebih besar).
+
+#### 2. `Node* createNode(int value)`
+Fungsi tersebut digunakan untuk membuat _node_ baru menggunakan fungsi `new`. Lalu, _node_ yang beru tersebut (`newNode`) akan diisi dengan nilai tertentu (diambil dari parameter `value`). Lalu, untuk `left` dan `right` akan di-_set_ `NULL` (masih belum punya anak).
+
+#### 3. `Node* insert(Node* root, int value)`
+Fungsi ini digunakan untuk melakukan penyisipan. Jika _tree_ kosong, maka fungsi `createNode` akan dipanggil untuk membuat _node_ baru. Namun, jika masih ada maka akan dilakukan penyisipan dengan kondisi sebagai berikut:
+1. Jika `value` < `root->data`, maka _insert_ ke kiri
+2. Jika `value` > `root->data`, maka _insert_ ke kanan
+3. Jika `value` = `root->data`, tidak akan terjadi apa-apa (karena tidak ada duplikat)
+
+#### 4. `void inorder(Node* root)`
+Fungsi ini digunakan untuk mendapatkan hasil data secara terurut (_ascending_). 
+
+#### 5. `bool search(Node* root, int key)`
+Fungsi ini digunakan untuk melakukan pencarian dari nilai yang ditargetkan (`key`). Dengan metode pencarian yang dilakukan sebagai berikut:
+1. Jika `root->data` = `NULL`, maka _return false_
+2. Jika `root->data` = `key`, maka _return true_
+3. Jika `root->data > key`, maka pencarian akan dilanjutkan ke kiri
+4. Jika `root->data < key`, maka pencarian akan dilanjutkan ke kanan
 
 **Output**:
 ![Output bst.cpp](image/bst.png)
