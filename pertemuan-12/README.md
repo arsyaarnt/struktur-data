@@ -213,6 +213,7 @@ Fungsi tersebut digunakan untuk menampilkan semua kunci secara _inorder_ (teruru
 Fungsi tersebut digunakan untuk mencari kunci yang ditargetkan (memiliki tingkat kompleksitas O(log n)).
 
 **Output**:
+
 ![Output btree.cpp](image/btree.png)
 
 ## BST
@@ -319,5 +320,6 @@ Fungsi ini digunakan untuk melakukan pencarian dari nilai yang ditargetkan (`key
 4. Jika `root->data < key`, maka pencarian akan dilanjutkan ke kanan
 
 **Output**:
+
 ![Output bst.cpp](image/bst.png)
 
