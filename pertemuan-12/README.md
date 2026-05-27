@@ -181,7 +181,36 @@ int main() {
 ```
 
 ### Penjelasan Kode
-#### 1. 
+#### 1. `class TreeNode`
+Pada bagian `class TreeNode`, terdiri dari variabel yang dibutuhkan agar B-Tree dapat diimplementasikan dengan baik. Variabel-variabel tersebut seperti: `*keys` yang digunakan untuk menyimpan nilai, lalu `t` untuk derajat minimum B-Tree, `n` untuk jumlah nilai atau kunci saat ini dalam _node_, `leaf` untuk _boolean_ apakah _node_ saat ini adalah daun, dan `**C` untuk _array pointer_ ke _child node_.
+
+#### 2. `class BTree`
+Pada bagian ini, terdapat dua variabel utama, yakni: `root` yang digunakan sebagai _pointer_ ke _node_ akar dan `t` yang digunakan sebagai derajat minimum B-Tree.
+
+#### 3. `TreeNode *TreeNode::search(int k)`
+Fungsi tersebut digunakan untuk proses penyisipan (_insert_), dengan prosesnya sebagai berikut:
+1. Jika akar kosong, maka akan dibuat _node_ baru dengan satu kunci
+2. Jika akar penuh (`n` = 2(`t`) - 1), maka akan dibuat _node_ akar baru, lalu pecah akar lama, dan akan ditentukan _child_ mana yang akan menerima kunci baru
+3. Jika akar tidak penuh, maka akan dipanggil fungsi `insertNonFull`
+
+#### 4. `void TreeNode::insertNonFull(int k)`
+Fungsi ini digunakan untuk proses penyisipan saat B-Tree masih belum penuh, dengan prosesnya sebagai berikut:
+1. Jika _node_ daun: sisipkan kunci ke posisi yang tepat dalam array
+2. Jika _node_ internal: cari _child_ yang tepat, lalu pecah terlebih dahulu (jika _child_ penuh), dan rekursif ke _child_ yang sesuai
+
+#### 5. `void TreeNode::splitChild(int i, TreeNode *y)`
+Fungsi ini digunakan untuk memecah _node_ `y` pada indeks ke-`i`, dengan prosesnya sebagai berikut:
+1. Buat _node_ baru `z` (_node_ ini akan menjadi _sibling_ kanan)
+2. Pindahkan `t - 1` kunci terbesar dari `y` ke `z`
+3. Pindahkan _child_ (jika ada) dari `y` ke `z`
+4. Sisipkan `z` sebagai _child_ baru setelah `y`
+5. Naikkan kunci median (`y->keys[t - 1]`) ke _parent_
+
+#### 6. `void TreeNode::traverse()`
+Fungsi tersebut digunakan untuk menampilkan semua kunci secara _inorder_ (terurut).
+
+#### 7. `TreeNode *TreeNode::search(int k)`
+Fungsi tersebut digunakan untuk mencari kunci yang ditargetkan (memiliki tingkat kompleksitas O(log n)).
 
 **Output**:
 ![Output btree.cpp](image/btree.png)
