@@ -46,7 +46,14 @@ int main(){
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+#### 1. `Graph(int v)`
+Merupakan _constructor_ yang berfungsi untuk membuat graf dengan jumlah vertex sebanyak `v`. Pada fungsi ini, dilakukan inisialisasi kepada seluruh elemen _adjacency matrix_ menjadi bernilai nol, menandakan bahwa belum terdapat hubungan antar vertex.
+
+#### 2. `void addEdge(int u, int v)`
+Fungsi tersebut digunakan untuk menambahkan sisi (_edge_) antara vertex `u` dan vertex `v`. Karena graf yang digunakan merupakan _undirected graph_ (graf tak berarah), maka nilai pada `matrix[u][v]` dan `matrix[v][u]` sama-sama bernilai satu.
+
+#### 3. `void display()`
+Fungsi tersebut digunakan untuk menampilkan _adjacency matrix_. Setiap baris dan kolom pada matriks menunjukkan hubungan antar vertex dalam graf.
 
 **Output**:
 
@@ -95,7 +102,14 @@ int main(){
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+#### 1. `Graph(int vertices)`
+Merupakan _constructor_ yang digunakan untuk membuat graf dengan jumlah vertex sebanyak `vertices`. Fungsi tersebut juga digunakan untuk menginisialisasi _adjacency list_ dengan ukuran yang sesuai menggunakan `adj.resize(V)`.
+
+#### 2. `void addEdge(int u, int v)`
+Fungsi tersebut digunakan untuk menambahkan hubungan (_edge_) antara vertex `u` dan vertex `v`. Karena graf yang digunakan merupakan _undirected graph_ (graf tak berarah), maka `v` ditambahkan ke daftar tetangga `u` dan `u` juga ditambahkan ke daftar tetangga `v`.
+
+#### 3. `void display()`
+Fungsi tersebut digunakan untuk menampilkan _adjacency list_. Setiap vertex akan ditampilkan bersama daftar vertex lain yang terhubung langsung dengannya.
 
 **Output**:
 
@@ -159,7 +173,14 @@ int main(){
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+#### 1. `Graph (int vertices)`
+Merupakan _constructor_ yang digunakan untuk membuat graf dengan jumlah vertex sebanyak `vertices`. Fungsi tersebut juga digunakan untuk menginisialisasi _adjacency list_ dengan ukuran yang sesuai menggunakan `adj.resize(V)`.
+
+#### 2. `void addEdge(int u, int v)`
+Fungsi tersebut digunakan untuk menambahkan hubungan (_edge_) antara vertex `u` dan vertex `v`. Karena graf yang digunakan merupakan _undirected graph_ (graf tak berarah), maka `v` ditambahkan ke daftar tetangga `u` dan `u` juga ditambahkan ke daftar tetangga `v`.
+
+#### 3. `void BFS(int start)`
+Fungsi tersebut mengimplementasikan algoritma `Breadth-First Search` (BFS), yang dalam kasus ini proses traversal akan dimulai dari vertex `start`. Struktur data _queue_ akan digunakan untuk mengunjungi vertex secara bertahap berdasarkan tingkat kedekatannya. Selain itu, _array_ `visited` digunakan untuk memastikan setiap vertex hanya dikunjungi satu kali.
 
 **Output**:
 
@@ -213,7 +234,14 @@ int main(){
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+#### 1. `Graph (int vertices)`
+Merupakan _constructor_ yang digunakan untuk membuat graf dengan jumlah vertex sebanyak `vertices`. Fungsi tersebut juga digunakan untuk menginisialisasi _adjacency list_ dengan ukuran yang sesuai menggunakan `adj.resize(V)`. Selanjutnya, _constructor_ ini juga akan menginisialisasi _vector_ `visited` dengan nilai `false` untuk menandai bahwa seluruh vertex belum pernah dikunjungi.
+
+#### 2. `void addEdge(int u, int v)`
+Fungsi tersebut digunakan untuk menambahkan hubungan (_edge_) antara vertex `u` dan vertex `v`. Karena graf yang digunakan merupakan _undirected graph_ (graf tak berarah), maka `v` ditambahkan ke daftar tetangga `u` dan `u` juga ditambahkan ke daftar tetangga `v`.
+
+#### 3. `void DFS(int v)`
+Fungsi tersebut mengimplementasikan algoritma `Depth First Search` (DFS) secara rekursif. Vertex yang sedang dikunjungi akan ditandai sebagai telah dikunjungi (`visited[v] = true`), kemudian seluruh tetangganya akan ditelusuri secara mendalam hingga tidak ada lagi vertex yang dapat dikunjungi.
 
 **Output**:
 
@@ -264,7 +292,14 @@ int main(){
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+#### 1. `Graph(int vertices)`
+Merupakan _constructor_ yang berfungsi untuk membuat graf berbobot (_weighted graph_) dengan jumlah vertex sebanyak `vertices`. Nilai tersebut disimpan ke dalam variabel `V` untuk digunakan pada operasi graf selanjutnya.
+
+#### 2. `void addEdge(int u, int v, int weight)`
+Fungsi tersebut digunakan untuk menambahkan hubungan (_edge_) antara vertex `u` dan vertex `v`. Karena graf yang digunakan merupakan _undirected graph_ (graf tak berarah), maka pasangan `(v, weight)` ditambahkan ke daftar tetangga `u` dan `(u, weight)` juga ditambahkan ke daftar tetangga `v`.
+
+#### 3. `void display()`
+Fungsi tersebut digunakan untuk menampilkan _adjacency list_ berbobot. Setiap vertex akan ditampilkan bersama daftar vertex lain yang terhubung langsung dengannya, beserta bobot dari masing-masing _edge_.
 
 **Output**:
 
@@ -323,7 +358,17 @@ int main(){
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+#### 1. `void dijkstra(int start, int V)`
+Fungsi tersebut mengimplementasikan algoritma `Dijkstra` untuk mencari jarak terpendek dari vertex awal (_start_) ke seluruh vertex lain dalam graf berbobot. Algoritma ini menggunakan struktur data _priority queue_ untuk memilih vertex dengan jarak sementara terkecil yang akan diproses terlebih dahulu.
+
+#### 2. Alur Program
+1. Semua jarak diinisialisasi dengan nilai `INF`.
+2. Jarak vertex awal diubah menjadi nol.
+3. Vertex awal dimasukkan ke dalam _priority queue_.
+4. Selama _priority queue_ tidak kosong, vertex dengan jarak terkecil akan diambil.
+5. Semua tetangga dari vertex tersebut diperiksa.
+6. Jika ditemukan jalur yang lebih pendek, nilai jarak diperbarui dan vertex dimasukkan kembali ke _priority queue_.
+7. Setelah seluruh vertex diproses, hasil jarak terpendek ditampilkan.
 
 **Output**:
 
@@ -454,7 +499,20 @@ int main(){
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+#### 1. `Graph(int vertices)`
+Merupakan _constructor_ yang digunakan untuk membuat graf dengan jumlah vertex sebanyak `vertices`. Fungsi tersebut juga digunakan untuk menginisialisasi _adjacency list_ dengan ukuran yang sesuai menggunakan `adj.resize(V)`. Selanjutnya, _constructor_ ini juga akan menginisialisasi _vector_ `visited` dengan nilai `false` untuk menandai bahwa seluruh vertex belum pernah dikunjungi (inisialisasi nilai `false` tersebut nantinya akan digunakan pada proses DFS).
+
+#### 2. `void addEdge(int u, int v)`
+Fungsi yang digunakan untuk menambahkan hubungan pertemanan antara dua pengguna. Karena graf bersifat _undirected graph_ (graf tak berarah), maka setiap pengguna akan disimpan sebagai tetangga satu sama lain.
+
+#### 3. `void BFS(int start)`
+Fungsi tersebut mengimplementasikan algoritma `Breadth First Search` (BFS). Traversal dimulai dari vertex `start` dan menggunakan struktur data _queue_ untuk mengunjungi setiap pengguna berdasarkan tingkat kedekatan hubungan. Pada studi kasus ini, BFS digunakan untuk menelusuri jaringan pertemanan dari Andi ke teman-teman yang terhubung dengannya.
+
+#### 4. `void DFS(int v)`
+Fungsi tersebut mengimplementasikan algoritma `Depth First Search` (DFS) secara rekursif. Vertex yang dikunjungi akan ditandai pada _vector_ `visited`, kemudian algoritma akan menelusuri setiap cabang pertemanan sedalam mungkin sebelum kembali ke cabang sebelumnya (_backtracking_).
+
+#### 5. `void dijkstra(int start, int V)`
+Fungsi tersebut mengimplementasikan algoritma `Dijkstra` untuk mencari jarak terpendek dari pengguna awal (`start`) ke seluruh pengguna lain dalam graf berbobot. _Priority queue_ digunakan untuk memilih vertex dengan jarak sementara terkecil sehingga proses pencarian jalur terpendek menjadi lebih efisien.
 
 **Output**:
 
