@@ -294,9 +294,9 @@ int main() {
 
 ### Penjelasan Kode
 Program tersebut mengimplementasikan struktur data _stack_ menggunakan _dynamic array_. Program diawali dengan meminta pengguna memasukkan kapasitas _stack_, kemudian mengalokasikan memori secara dinamis menggunakan operator `new`. Variabel `top` digunakan untuk menandai posisi elemen teratas _stack_. Selanjutnya, program menyediakan menu, dengan pilihan sebagai berikut:
-1. Melakukan operasi _push_ (menambahkan elemen ke stack)
-2. Melakukan operasi _pop_ (menghapus elemen teratas stack)
-3. Melakukan _display_ (menampilkan seluruh isi stack)
+1. Melakukan operasi _push_ (menambahkan elemen ke _stack_)
+2. Melakukan operasi _pop_ (menghapus elemen teratas _stack_)
+3. Melakukan _display_ (menampilkan seluruh isi _stack_)
 4. Menghentikan program
    
 Pada setiap operasi, program juga melakukan pengecekan kondisi _overflow_ saat _stack_ penuh dan _underflow_ saat _stack_ kosong. Sebelum program berakhir, memori yang telah dialokasikan akan dibebaskan menggunakan operator `delete[]` untuk mencegah terjadinya _memory leak_.
@@ -379,12 +379,12 @@ int main() {
 
 ### Penjelasan Kode
 Program tersebut mengimplementasikan struktur data _queue_ menggunakan _dynamic array_. Program diawali dengan meminta pengguna memasukkan kapasitas _queue_, kemudian mengalokasikan memori secara dinamis menggunakan operator `new`. Variabel `front` digunakan untuk menandai posisi elemen terdepan, sedangkan `rear` digunakan untuk menandai posisi elemen terakhir dalam _queue_. Selanjutnya, program menyediakan menu dengan pilihan sebagai berikut:
-1. Melakukan operasi _enqueue_ (menambahkan elemen ke bagian belakang queue)
-2. Melakukan operasi _dequeue_ (menghapus elemen dari bagian depan queue)
-3. Melakukan _display_ (menampilkan seluruh isi queue)
+1. Melakukan operasi _enqueue_ (menambahkan elemen ke bagian belakang _queue_)
+2. Melakukan operasi _dequeue_ (menghapus elemen dari bagian depan _queue_)
+3. Melakukan _display_ (menampilkan seluruh isi _queue_)
 4. Menghentikan program
 
-Program juga melakukan pengecekan kondisi _queue_ penuh dan _queue kosong_ sebelum menjalankan operasi tertentu. Setelah program selesai dijalankan, memori yang telah dialokasikan akan dibebaskan menggunakan operator `delete[]` untuk mencegah terjadinya _memory leak_.
+Program juga melakukan pengecekan kondisi _queue_ penuh dan _queue_ kosong sebelum menjalankan operasi tertentu. Setelah program selesai dijalankan, memori yang telah dialokasikan akan dibebaskan menggunakan operator `delete[]` untuk mencegah terjadinya _memory leak_.
 
 **Output**:
 
