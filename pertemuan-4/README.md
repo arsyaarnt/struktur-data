@@ -293,7 +293,13 @@ int main() {
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+Program tersebut mengimplementasikan struktur data _stack_ menggunakan _dynamic array_. Program diawali dengan meminta pengguna memasukkan kapasitas _stack_, kemudian mengalokasikan memori secara dinamis menggunakan operator `new`. Variabel `top` digunakan untuk menandai posisi elemen teratas _stack_. Selanjutnya, program menyediakan menu, dengan pilihan sebagai berikut:
+1. Melakukan operasi _push_ (menambahkan elemen ke stack)
+2. Melakukan operasi _pop_ (menghapus elemen teratas stack)
+3. Melakukan _display_ (menampilkan seluruh isi stack)
+4. Menghentikan program
+   
+Pada setiap operasi, program juga melakukan pengecekan kondisi _overflow_ saat _stack_ penuh dan _underflow_ saat _stack_ kosong. Sebelum program berakhir, memori yang telah dialokasikan akan dibebaskan menggunakan operator `delete[]` untuk mencegah terjadinya _memory leak_.
 
 **Output**:
 
@@ -372,7 +378,13 @@ int main() {
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+Program tersebut mengimplementasikan struktur data _queue_ menggunakan _dynamic array_. Program diawali dengan meminta pengguna memasukkan kapasitas _queue_, kemudian mengalokasikan memori secara dinamis menggunakan operator `new`. Variabel `front` digunakan untuk menandai posisi elemen terdepan, sedangkan `rear` digunakan untuk menandai posisi elemen terakhir dalam _queue_. Selanjutnya, program menyediakan menu dengan pilihan sebagai berikut:
+1. Melakukan operasi _enqueue_ (menambahkan elemen ke bagian belakang queue)
+2. Melakukan operasi _dequeue_ (menghapus elemen dari bagian depan queue)
+3. Melakukan _display_ (menampilkan seluruh isi queue)
+4. Menghentikan program
+
+Program juga melakukan pengecekan kondisi _queue_ penuh dan _queue kosong_ sebelum menjalankan operasi tertentu. Setelah program selesai dijalankan, memori yang telah dialokasikan akan dibebaskan menggunakan operator `delete[]` untuk mencegah terjadinya _memory leak_.
 
 **Output**:
 
@@ -490,7 +502,16 @@ int main() {
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+Program tersebut mengimplementasikan struktur data _stack_ dan _queue_ menggunakan _dynamic array_. Program mengalokasikan memori secara dinamis untuk menyimpan data barang pada _stack_ dan _queue_ menggunakan operator `new`. Variabel `top` digunakan untuk menandai posisi elemen teratas pada _stack_, sedangkan variabel `front` dan `rear` digunakan untuk menandai posisi elemen terdepan dan terakhir pada _queue_. Program tersebut juga menyediakan menu untuk melakukan operasi pada _stack_ dan _queue_, dengan pilihannya sebagai berikut: 
+1. Menyimpan barang (_push_)
+2. Mengambil barang (_pop_)
+3. Menampilkan isi _stack_
+4. Menambahkan barang ke antrian (_enqueue_)
+5. Mengambil barang dari antrian (_dequeue_)
+6. Menampilkan isi _queue_
+7. Menghentikan program
+
+Pada setiap operasi, program melakukan pengecekan kondisi penuh maupun kosong untuk mencegah kesalahan akses data. Setelah program selesai dijalankan, memori yang telah dialokasikan secara dinamis dibebaskan menggunakan operator `delete[]` pada _array stack_ dan _queue_ untuk mencegah terjadinya _memory leak_.
 
 **Output**:
 
@@ -650,7 +671,15 @@ int main() {
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+Program tersebut mengimplementasikan sebuah sistem inventori gudang yang menggunakan kombinasi struktur data _stack_ dan _queue_ yang disimpan dalam _dynamic array_. Program menggunakan `struct Barang` untuk merepresentasikan data barang yang terdiri dari ID, nama barang, jumlah barang, dan tanggal masuk. Memori untuk _stack_ dan _queue_ dialokasikan secara dinamis menggunakan operator `new`, dengan variabel `top` digunakan untuk mengelola _stack_, serta variabel `front` dan `rear` digunakan untuk mengelola _queue_. Program tersebut juga menyediakan beberapa menu operasi, dengan pilihannya sebagai berikut:
+1. Menambahkan barang ke gudang (_push_)
+2. Mengambil barang dari gudang (_pop_)
+3. Menampilkan isi gudang
+4. Memindahkan barang dari gudang ke antrian pengiriman (_enqueue_)
+5. Mengirim barang dari antrian (_dequeue_)
+6. Menampilkan daftar antrian pengiriman
+
+Operasi pada gudang menerapkan prinsip **LIFO (Last In First Out)** melalui struktur data _stack_, sedangkan proses pengiriman menerapkan prinsip **FIFO (First In First Out)** melalui struktur data _queue_. Selain itu, program melakukan pengecekan kondisi penuh dan kosong untuk memastikan setiap operasi dapat berjalan dengan aman. Setelah program selesai dijalankan, memori yang telah dialokasikan secara dinamis untuk struktur data _stack_ dan _queue_ dibebaskan menggunakan operator `delete[]` untuk mencegah terjadinya _memory leak_.
 
 **Output**:
 
