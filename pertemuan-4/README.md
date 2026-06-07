@@ -31,7 +31,7 @@ int main() {
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+Program tersebut merupakan program yang mengimplementasikan _dynamic array_. Secara umum, _dynamic array_ dapat dibuat dengan menggunakan operator `new`. `int* data` merupakan _pointer_ yang menunjuk ke alamat awal _array_, dengan `new int[n]` akan mengalokasikan memori untuk `n` buah elemen bertipe _integer_. Selanjutnya, _for loop_ dapat digunakan untuk melakukan _input_ data dan menampilkan isi _array_. Terakhir, memori yang dialokasikan sebelumnya harus dibebaskan menggunakan operator `delete[]`.
 
 **Output**:
 
@@ -113,7 +113,23 @@ int main() {
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+#### 1. `Stack(int size)`
+Merupakan _constructor_ yang berfungsi untuk menginisialisasi objek _stack_. Pada fungsi tersebut, kapasitas _stack_ ditentukan sesuai parameter `size`, memori dialokasikan secara dinamis menggunakan operator `new`, dan variabel `top` diatur menjadi -1 untuk menandakan bahwa _stack_ masih kosong.
+
+#### 2. `void push(int x)`
+Fungsi tersebut digunakan untuk menambahkan elemen baru ke bagian atas _stack_. Sebelum penambahan dilakukan, fungsi akan memeriksa apakah _stack_ sudah penuh (_overflow_). Jika masih tersedia ruang, elemen akan disimpan pada posisi teratas _stack_.
+
+#### 3. `void pop()`
+Fungsi tersebut digunakan untuk menghapus elemen yang berada di posisi teratas _stack_. Fungsi ini akan mengecek terlebih dahulu, apakah stack kosong (_underflow_) atau tidak. Jika _stack_ tidak kosong, elemen teratas akan dihapus dan nilai `top` diperbarui.
+
+#### 4. `void peek()`
+Fungsi tersebut digunakan untuk melihat atau menampilkan elemen yang berada pada posisi teratas _stack_ tanpa menghapus elemen tersebut dari _stack_.
+
+#### 5. `void display()`
+Fungsi tersebut digunakan untuk menampilkan seluruh isi _stack_. Elemen ditampilkan mulai dari posisi teratas hingga posisi terbawah sesuai karakteristik struktur data _stack_ (**LIFO (Last In First Out)**).
+
+#### 6. `~Stack()`
+Merupakan _destructor_ yang berfungsi untuk membebaskan memori yang sebelumnya dialokasikan secara dinamis pada _array_ menggunakan operator `delete[]`, sehingga dapat mencegah terjadinya _memory leak_.
 
 **Output**:
 
@@ -187,8 +203,20 @@ int main() {
 ```
 
 ### Penjelasan Kode
-#### 1. ``
+#### 1. `Queue(int size)`
+Merupakan _constructor_ yang berfungsi untuk menginisialisasi objek _queue_. Pada fungsi tersebut, kapasitas _queue_ ditentukan sesuai parameter `size`, memori dialokasikan secara dinamis menggunakan operator `new`, variabel `front` diinisialisasi dengan nilai nol, dan `rear` diinisialisasi dengan nilai -1 untuk menandakan bahwa _queue_ masih kosong.
 
+#### 2. `void enqueue(int x)`
+Fungsi tersebut digunakan untuk menambahkan elemen baru ke bagian belakang (_rear_) _queue_. Sebelum penambahan dilakukan, fungsi akan memeriksa apakah _queue_ sudah penuh. Jika masih tersedia ruang, elemen akan ditambahkan pada posisi belakang _queue_.
+
+#### 3. `void dequeue()`
+Fungsi tersebut digunakan untuk menghapus elemen yang berada pada bagian depan (_front_) _queue_. Fungsi ini terlebih dahulu memeriksa apakah _queue_ kosong. Jika _queue_ tidak kosong, elemen terdepan akan dihapus dan posisi _front_ akan digeser ke elemen berikutnya.
+
+#### 4. `void display()`
+Fungsi tersebut digunakan untuk menampilkan seluruh isi _queue_. Elemen ditampilkan mulai dari posisi _front_ hingga _rear_, sesuai dengan prinsip kerja _queue_ yaitu **FIFO (First In First Out)**.
+
+#### 5. `~Queue()`
+Merupakan _destructor_ yang berfungsi untuk membebaskan memori yang sebelumnya dialokasikan secara dinamis pada _array_ menggunakan operator `delete[]`, sehingga dapat mencegah terjadinya _memory leak_.
 
 **Output**:
 
